@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12" >
+    <div class="col-sm-7" >
       <h1>Get to the daily tasks</h1>
-      {{title}}
+      
       <div class="form-group">
         <input type="text" class="form-control" name="recipe" [(ngModel)]="recipeName">
       </div>
@@ -11,14 +11,21 @@
   <div class="row">
     <div class="col-sm-7">
       <button type="button" class="btn btn-light" (click)="onAdd()">Add</button>
-      <button type="button" class="btn btn-light" (click)="onRemove()">remove</button>
+      <span class="pull-right">
+        <button type="button" class="btn btn-light" (click)="clear()">Clear</button>
+      </span>
+      <button type="button" class="btn btn-light" (click)="onRemoveAll()">Remove all</button>
     </div>
   </div>
   <div class="row">
-      <div class="col-sm-6">
-        <div class="list-group">
-          <a href="#" class="list-group-item" *ngFor="let recipe of recipes">{{recipe}}</a>
-        </div>
+      <div class="col-sm-7 list-group">
+          <a  class="list-group-item clearfix" *ngFor="let recipe of recipes">
+            <div class="pull-left">
+              <h4 class="list-group-item-text">{{recipe}}</h4>
+           </div>
+          <span class="pull-right">
+            <button type="button" class="btn btn-danger" (click)="onRemove(recipe)">remove</button>
+          </span></a>
       </div>
   </div>
 
