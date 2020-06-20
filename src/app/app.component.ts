@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title:string = 'List';
-  recipeName:string='';
+  // recipeName:string='';
+  @ViewChild('recipeName') listInput;
   recipes=[];
 
-  onAdd(){
-    this.recipes.push(this.recipeName);
-    this.recipeName='';
+  onAdd(input:HTMLInputElement){
+    console.log(this.listInput.nativeElement.value)
+    this.recipes.push(input.value);
+    input.value='';
   }
 
   onRemove(name){
@@ -32,13 +34,13 @@ export class AppComponent {
     //     ++i;
     //   }
     // }
-
+    // this.recipeName='';
     this.recipes=[];
-  
   }
 
 
-  clear(){
-    this.recipeName='';
+  clear(input:HTMLInputElement){
+    //this.recipeName='';
+    input.value='';
   }
 }

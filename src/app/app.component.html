@@ -4,15 +4,16 @@
       <h1>Get to the daily tasks</h1>
       
       <div class="form-group">
-        <input type="text" class="form-control" name="recipe" [(ngModel)]="recipeName">
+        <!-- <input type="text" class="form-control" name="recipe" [(ngModel)]="recipeName"> -->
+        <input type="text" class="form-control" name="recipe" #recipeName>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-7">
-      <button type="button" class="btn btn-light" (click)="onAdd()">Add</button>
+      <button type="button" class="btn btn-light" (click)="onAdd(recipeName)">Add</button>
       <span class="pull-right">
-        <button type="button" class="btn btn-light" (click)="clear()">Clear</button>
+        <button type="button" class="btn btn-light" (click)="clear(recipeName)">Clear</button>
       </span>
       <button type="button" class="btn btn-light" (click)="onRemoveAll()">Remove all</button>
     </div>
