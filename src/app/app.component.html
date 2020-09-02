@@ -1,10 +1,95 @@
-<div class="container">
+<p>covid  cases in india from start to end:</p>
+
+
+
+
+
+<div class="chart-wrapper">
+  <canvas baseChart
+      [datasets]="lineData"
+      [labels]="lineLabel"
+      [options]="lineOPtions"
+      [colors]="lineColors"
+      [legend]="lineLegend"
+      [chartType]="lineType"
+      [plugins]="linePlugins"
+      ></canvas>
+</div>
+
+<br>
+<br>
+<p>covid cases of states along with districts</p>
+<br>
+<p>Please wait data is loading</p>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Enter state or district" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   <ng-container matColumnDef="state">
+     <th mat-header-cell *matHeaderCellDef>State</th>
+     <td mat-cell *matCellDef="let ele">{{ele.state}}</td>
+   </ng-container>
+   <ng-container matColumnDef="district">
+     <th mat-header-cell *matHeaderCellDef>District</th>
+     <td mat-cell *matCellDef="let ele">{{ele.district}}&nbsp;</td>
+   </ng-container>
+   <ng-container matColumnDef="cases">
+    <th mat-header-cell *matHeaderCellDef>Cases</th>
+    <td mat-cell *matCellDef="let ele">{{ele.cases}}&nbsp;</td>
+  </ng-container>
+  <ng-container matColumnDef="deceased">
+    <th mat-header-cell *matHeaderCellDef>Deceased</th>
+    <td mat-cell *matCellDef="let ele">{{ele.deceased}}&nbsp;</td>
+  </ng-container>
+  <ng-container matColumnDef="recovered">
+    <th mat-header-cell *matHeaderCellDef>Recovered</th>
+    <td mat-cell *matCellDef="let ele">{{ele.recovered}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="5">No data matching</td>
+  </tr>
+</table>
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm-7" >
       <h1>Get to the daily tasks</h1>
       
       <div class="form-group">
-        <!-- <input type="text" class="form-control" name="recipe" [(ngModel)]="recipeName"> -->
+      
         <input type="text" class="form-control" name="recipe" #recipeName>
       </div>
     </div>
@@ -30,4 +115,4 @@
       </div>
   </div>
 
-</div>
+</div> -->
